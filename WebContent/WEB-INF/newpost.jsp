@@ -13,6 +13,7 @@
 <title>New Post</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/navbar.jsp"></jsp:include>
 	<div class="container">
 		<div class="well">
 
@@ -24,12 +25,7 @@
 						class="form-control" name="title" placeholder="Title" />
 
 				</div>
-				<!-- 
-				<div class="form-group">
-					<label for="author">Date</label> <input type="text"
-						class="form-control" name="date" placeholder="Date">
-				</div>
- -->
+				
 				<div class="form-group">
 					<label for="text">Text</label>  
 					  <textarea rows="10" class="form-control" 

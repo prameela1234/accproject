@@ -25,13 +25,6 @@
 					class="form-control" value="${blogpost.title}">
 			</div>
 
-			<!-- <div class="form-group">
-				<label for="text">Content</label> 
-     			  <textarea rows="10" class="form-control" 
-					  id="text" placeholder="content"></textarea> 
-			</div>
-			 -->
-			
 			<div class="form-group">
 				<label for="text">Text</label> <input name="text" type="text"
 					class="form-control" value="${blogpost.text}">

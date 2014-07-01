@@ -20,6 +20,7 @@ body
 
 </style>
 <body>
+<jsp:include page="/WEB-INF/navbar.jsp"></jsp:include>
 
 	<div class="container">
 		<blockquote>

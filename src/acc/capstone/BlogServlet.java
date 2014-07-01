@@ -28,7 +28,6 @@ public class BlogServlet extends HttpServlet {
         super();
         
     }
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	BlogManager manager = new BlogManager(ds);
