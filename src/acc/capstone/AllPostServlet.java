@@ -25,7 +25,6 @@ public class AllPostServlet extends HttpServlet {
 		BlogManager manager = new BlogManager(ds);
 
 		List<Blog> posts = manager.findallPosts();
-
 		request.setAttribute("posts", posts);
 		request.setAttribute("now", new Date());
 
