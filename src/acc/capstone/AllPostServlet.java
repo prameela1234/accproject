@@ -28,6 +28,10 @@ public class AllPostServlet extends HttpServlet {
 
 		request.setAttribute("posts", posts);
 		request.setAttribute("now", new Date());
+		
+		for (Blog p : posts) {
+			System.out.println("The date is: "+ p.getDate());
+		}
 
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher("/WEB-INF/blog.jsp");
