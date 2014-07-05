@@ -13,14 +13,12 @@
 <title>Blog posts</title>
 </head>
 <style>
-body
-
- /* {background-image:url("profnkata.com/images/psychic2.jpg") */
- {background-color: #b0c4de ;} 
-
+body /* {background-image:url("profnkata.com/images/psychic2.jpg") */ {
+	background-color: #b0c4de;
+}
 </style>
 <body>
-<jsp:include page="/WEB-INF/navbar.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/navbar.jsp"></jsp:include>
 
 	<div class="container">
 		<blockquote>
@@ -30,11 +28,15 @@ body
 	<div class="container">
 		<c:forEach var="blogpost" items="${posts}">
 			<blockquote>
-			 	<p>${blogpost.title}</p>
+				<p>${blogpost.title}</p>
 				<p>${blogpost.date}</p>
 				<p>${blogpost.text}</p>
-				<p><a href="<c:url value="${blogpost.link}"/>">${blogpost.link}</a></p>
-				<p><a href="/edit?rowid=<c:out value="${blogpost.id}"/>">Edit</a></p>
+				<p>
+					<a href="<c:url value="${blogpost.link}"/>">${blogpost.link}</a>
+				</p>
+				<p>
+					<a href="/edit?rowid=<c:out value="${blogpost.id}"/>">Edit</a>
+				</p>
 			</blockquote>
 		</c:forEach>
 	</div>

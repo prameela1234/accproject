@@ -1,22 +1,22 @@
 package acc.capstone;
 
-public class Bloguser {
-private String username;
-private String password;
+public class BlogUser {
+	private String username;
+	private String password;
 
-public Bloguser(String username, String password) {
-super();
-this.username = username;
-this.password = password;
+	public BlogUser(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
 
-}
+	}
 
-public String getUsername() {
-return username;
-}
+	public String getUsername() {
+		return username;
+	}
 
-public String getPassword() {
-return password;
-}
+	public String getPassword() {
+		return password;
+	}
 
 }

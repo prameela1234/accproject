@@ -14,52 +14,64 @@ public class EditPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name = "jdbc/MyBlog")
 	private DataSource ds;
-   
-    public EditPostServlet() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws 
-	       ServletException, IOException {
-		BlogManager blog = new BlogManager(ds);
-		System.out.println("Rowid=" + request.getParameter("rowid"));
-		int postID = Integer.parseInt(request.getParameter("rowid"));
+	public EditPostServlet() {
+		super();
+	}
 
-		Blog post = blog.findPostById(postID);
-		if (post != null) {
-		request.setAttribute("blogpost", post);
-		
-		request.getRequestDispatcher("/WEB-INF/edit.jsp").forward(request, response);
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		Blog post = null;
+
+		try {
+			BlogManager blog = new BlogManager(ds);
+			System.out.println("Rowid=" + request.getParameter("rowid"));
+			int postID = Integer.parseInt(request.getParameter("rowid"));
+
+			post = blog.findPostById(postID);
+
+		} catch (NumberFormatException e) {
+		}
+
+		if (post == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		} else {
-		response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			request.setAttribute("blogpost", post);
+			request.getRequestDispatcher("/WEB-INF/edit.jsp").forward(request,
+					response);
+
 		}
 
 	}
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-	
-    int id = Integer.parseInt(request.getParameter("id"));
-	String title = request.getParameter("title");
-	String content = request.getParameter("text");
-	String dates = request.getParameter("dates");
-	String link = request.getParameter("link");
-	String img = request.getParameter("img");
-	System.out.print("Edit Servlet output" + id + title + content + dates + link + img);
-	
-	Blog post = new Blog(id,title,content,dates,link, img);
-	BlogManager manager = new BlogManager(ds);
-	
-	System.out.print("Edit Servlet output2: " + post.getId() + post.getTitle() + 
-			          post.getText() + post.getLink() + post.getImg());
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		int id = Integer.parseInt(request.getParameter("id"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("text");
+		String dates = request.getParameter("dates");
+		String link = request.getParameter("link");
+		String img = request.getParameter("img");
+		System.out.print("Edit Servlet output" + id + title + content + dates
+				+ link + img);
+
+		Blog post = new Blog(id, title, content, dates, link, img);
+		BlogManager manager = new BlogManager(ds);
+
+		System.out.print("Edit Servlet output2: " + post.getId()
+				+ post.getTitle() + post.getText() + post.getLink()
+				+ post.getImg());
 		if (manager.updateBlog(post)) {
 
 			response.sendRedirect("/");
 		} else {
-			request.getRequestDispatcher("/WEB-INF/edit.jsp").forward(request, response);
-			
+			request.getRequestDispatcher("/WEB-INF/edit.jsp").forward(request,
+					response);
+
 		}
 
-	}	
+	}
 
 }

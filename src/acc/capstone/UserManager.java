@@ -15,8 +15,8 @@ this.ds = ds;
 }
 
 
-public Bloguser userByNameAndPassword(String username, String password) {
-Bloguser user = null;
+public BlogUser userByNameAndPassword(String username, String password) {
+BlogUser user = null;
 
 try {
 Connection connection = ds.getConnection();
@@ -28,7 +28,7 @@ statement.setString(2, password);
 ResultSet results = statement.executeQuery();
 
 if (results.next()) {
-user = new Bloguser(results.getString("username"), results.getString("password"));
+user = new BlogUser(results.getString("username"), results.getString("password"));
 }
 
 results.close();

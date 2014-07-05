@@ -16,10 +16,10 @@
 
 	<div class="container">
 		<h2>Edit Post:${blogpost.id}</h2>
-		
+
 		<form action="/edit" method="post">
 			<input name="id" type="hidden" value="${blogpost.id}" />
-			
+
 			<div class="form-group">
 				<label for="text">Title</label> <input name="title" type="text"
 					class="form-control" value="${blogpost.title}">
@@ -29,13 +29,21 @@
 				<label for="text">Text</label> <input name="text" type="text"
 					class="form-control" value="${blogpost.text}">
 			</div>
-			
-			
+
+			<%-- 
+			<div class="form-group">
+				<label for="text">Text Area</label>
+				<textarea rows="10" class="form-control" name="text"
+					value="${blogpost.text}"></textarea>
+			</div>
+			 --%>
+
+
 			<div class="form-group">
 				<label for="text">Link</label> <input name="link" type="text"
 					class="form-control" value="${blogpost.link}">
 			</div>
-			
+
 			<div class="form-group">
 				<label for="text">Image URL</label> <input name="img" type="text"
 					class="form-control" value="${blogpost.img}">

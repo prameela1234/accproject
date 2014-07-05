@@ -25,7 +25,8 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-	Bloguser user = (Bloguser) httpRequest.getSession().getAttribute("user");
+		BlogUser user = (BlogUser) httpRequest.getSession()
+				.getAttribute("user");
 
 		if (user == null) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;

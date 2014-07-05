@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 		String login = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		Bloguser user = validateUser(login, password);
+		BlogUser user = validateUser(login, password);
 		if (user != null) {
 			request.getSession().setAttribute("user", user);
 			response.sendRedirect("/");
@@ -38,9 +38,9 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 
-	private Bloguser validateUser(String username, String password) {
+	private BlogUser validateUser(String username, String password) {
 		UserManager manager = new UserManager(ds);
-		Bloguser user = manager.userByNameAndPassword(username, password);
+		BlogUser user = manager.userByNameAndPassword(username, password);
 		return user;
 	}
 

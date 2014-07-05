@@ -13,11 +13,16 @@
 <title>New Post</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/navbar.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/navbar.jsp"></jsp:include>
 	<div class="container">
 		<div class="well">
 
 			<h2>Add a Post</h2>
+
+			<c:if test="${error != null }">
+				<div class="alert alert-danger">${error}</div>
+			</c:if>
+
 			<form method="POST" action="/new">
 
 				<div class="form-group">
@@ -25,16 +30,16 @@
 						class="form-control" name="title" placeholder="Title" />
 
 				</div>
-				
+
 				<div class="form-group">
-					<label for="text">Text</label>  
-					  <textarea rows="10" class="form-control" 
-					  name="text" placeholder="content"></textarea> 
+					<label for="text">Text</label>
+					<textarea rows="10" class="form-control" name="text"
+						placeholder="content"></textarea>
 				</div>
 
 				<div class="form-group">
-					<label for="link">Link</label> <input type="text" 
-					class="form-control" name="link" placeholder="Link" />
+					<label for="link">Link</label> <input type="text"
+						class="form-control" name="link" placeholder="Link" />
 				</div>
 
 				<div class="form-group">
